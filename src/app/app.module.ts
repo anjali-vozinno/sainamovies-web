@@ -11,7 +11,7 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { environment } from 'src/environments/environment';
 import { DataService } from './services/data.service';
 import { AuthGuard } from "./auth.guard";
@@ -30,6 +30,7 @@ import { AuthGuard } from "./auth.guard";
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase)

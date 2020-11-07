@@ -7,19 +7,18 @@ import { Router} from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  slide : []; 
+  slide : []; token;
   constructor(private dataservice:DataService,private router:Router) { 
-
-    this.getBanner();
+   this.token= JSON.parse(localStorage.getItem('token'));
   }
  
   ngOnInit(): void {
+    this.getBanner(this.token);
   }
-  getBanner(){
-    this.dataservice.getBanner()
+  getBanner(tokenValue){
+    this.dataservice.getBanner(tokenValue)
     .subscribe((resp:any)=>{
-      this.slide=resp[0].thumbUrl
-      // console.log( this.slide)
+      this.slide=resp[0].thumbUrl;
     })
   }
 
