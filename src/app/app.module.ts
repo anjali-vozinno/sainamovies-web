@@ -15,7 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { environment } from 'src/environments/environment';
 import { DataService } from './services/data.service';
 import { AuthGuard } from "./auth.guard";
-
+import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 
 @NgModule({
   declarations: [
@@ -33,6 +33,8 @@ import { AuthGuard } from "./auth.guard";
     FormsModule,
     ReactiveFormsModule,
     AngularFireAuthModule,
+    
+    ShowHidePasswordModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [AuthGuard,DataService],

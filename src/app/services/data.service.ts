@@ -3,6 +3,7 @@ import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http'
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FirebaseApp } from '@angular/fire';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,14 @@ export class DataService {
   constructor(private http:HttpClient,
     public afAuth: AngularFireAuth,
     public firebase: FirebaseApp,
+    public afs:AngularFirestore,
     public router: Router) {
       this.afAuth.authState.subscribe(user => {
         if (user) {
+          // console.log(user.displayName);
           this.userData = user;
           localStorage.setItem('user', JSON.stringify(this.userData));
+          // console.log(JSON.parse(localStorage.getItem('user')));
         } else {
           localStorage.setItem('user', null);
         }
@@ -35,10 +39,12 @@ export class DataService {
        return this.http.get('https://api-dev.sainaplay.info/banners',this.getOptions()); 
   }
   
-    signUp(email, password) {
-      this.afAuth.createUserWithEmailAndPassword(email, password)
-      .then(() => {
-         this.router.navigateByUrl('');
+    signUp(data) {            
+      this.afAuth.createUserWithEmailAndPassword(data.email, data.password)
+      .then(() => {   
+        console.log(data)
+        // this.afs.doc('userdata');
+        this.router.navigateByUrl('');
       }).catch(error => {
         window.alert(error);
       })
@@ -62,8 +68,25 @@ export class DataService {
         window.alert(err);
       })
     }
+
+    // private oAuthLogin(provider) {
+    //   return this.afAuth.signInWithPopup(provider)
+    //   .then((credential) => {
+        
+    //   })
+    // }
+
+    // updateUserData(user) {
+    //   const userRef = this.afs.collection('users').doc(user.uid);
+    //   const data: User = {
+    //     uid: user.uid,
+    //     email: user.email,
+    //     displayName:user.displayName
+    //   }
+    // }
+
     signOut() {
-      return this.afAuth.signOut()
+      return this.afAuth.signOut()      
       .then(() => {
         localStorage.removeItem('user');
         this.router.navigateByUrl('login');

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from "../services/data.service";
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,6 +11,7 @@ import { DataService } from "../services/data.service";
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  
   constructor(private fb: FormBuilder, public dataService: DataService, private router: Router) { }
 
   loginError(e) {
@@ -31,5 +33,6 @@ export class LoginComponent implements OnInit {
       alert("form invalid")
     }
   }
+
 
 }

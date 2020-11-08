@@ -1,3 +1,4 @@
+
 <div class="launch-page">
     <div class="row">
         <div class="col">
@@ -12,10 +13,14 @@
                   <input formControlName="email" name="email" type="email" class="form-control text-box" id="email" >
                   <div class="l_error" *ngIf="loginError('email')">Invalid Email</div>
                 </div>
-                <div class="form-group">
+                <div class="form-group password-box">
                   <label  class="labels" for="pwd">Password</label>
-                   <input formControlName="psw" name="psw" type="password" class="form-control text-box" id="pwd">
-                  <div class="l_error" *ngIf="loginError('psw')">Invalid password</div>
+                  <show-hide-password class="show-hide" btnStyle="none">
+                  <!-- btnStyle="primary" -->
+                   <input type='password' formControlName="psw" name="psw" class="form-control text-box" id="pwd">
+                  </show-hide-password>
+                 
+                   <div class="l_error" *ngIf="loginError('psw')">Invalid password</div>
                 </div>
                <button type="submit" class="btn btn-signin">SIGN IN</button>
                <!-- <a routerLink="signup">SignUp</a> -->
@@ -32,12 +37,38 @@
               </div>
         </div>
        
-    </div>
+        <div class="row social-icons">
+          <!-- <p style="color: aliceblue;">hiiii</p> -->
+          <div class="col-4">
+            &nbsp;
+          </div>
+          <div class="col-1">
+          <img src="assets/images/google.png" alt="google" class="image-size">
+        </div>
+        <div class="col-1">
+          <img src="assets/images/facebook.png" alt="facebook" class="image-size">
+        </div>
+        <div class="col-1">
+          <img src="assets/images/mac.png" alt="mac" class="image-size-m">
+        </div>
+        <div class="col-1">
+          <img src="assets/images/amazon.png" alt="amazon" class="image-size-a"> 
+        </div>
+        <div class="col-4">
+          &nbsp;
+        </div>
+        </div>
+        <div class="sign-up-text">
+          Don't have an account ?
+        </div>
+        <div class="sign-up">
+          <a routerLink="signup">
+          <button class="btn btn-signup" type="submit">SIGN UP</button>
+        </a>
+        </div>
+        </div>
         <div class="col">
             
         </div>
-        
-    </div>
-   
-
+    </div> 
 </div>

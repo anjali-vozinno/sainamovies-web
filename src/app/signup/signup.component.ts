@@ -18,13 +18,20 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
+      name:['', [Validators.required]],
       email: ['', [Validators.email, Validators.required]],
-      psw: ['', [Validators.required]]
+      password: ['', [Validators.required]],
+      password_c: ['', [Validators.required]]
     })
   }
   signup() {
+    const data = {
+      name: this.signupForm.value.name,
+      email: this.signupForm.value.email,
+      password: this.signupForm.value.password
+    }
     if (this.signupForm.valid) {
-      this.dataService.signUp(this.signupForm.value.email, this.signupForm.value.psw)
+      this.dataService.signUp(data)
     }
   }
 

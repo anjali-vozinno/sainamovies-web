@@ -13,6 +13,8 @@
 }
 .text-box {
     background-color: rgb(90, 88, 88);
+    color: white;
+    border-color: rgb(90, 88, 88);
 }
 .labels {
     color: white;
@@ -65,4 +67,42 @@
       color: #ffffff;
       background-color: black;
     }
+    .image-size {
+        width: 20px;
+        height: 20px;
+    }
+    .image-size-a {
+        width: 35px;
+        height: 35px;
+    }
+    .image-size-m {
+        width: 30px;
+        height: 30px;
+    }
   
+    .btn-signup {
+        color: white;
+        background-color: black;
+        border-color: goldenrod;
+        border-radius: 50px;
+        width: 120px;
+        height: 34px;
+        padding: inherit;
+    }
+    .sign-up-text  {
+        margin-left: 30%;
+        margin-top: 20px;
+        font-size: smaller;
+        color: white;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .sign-up {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .show-hide {
+        background-color: rgb(90, 88, 88);
+        border-color: rgb(90, 88, 88);
+        margin-left: -1px;
+    }
