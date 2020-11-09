@@ -9,6 +9,18 @@
   <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 </head>
 <body>
+  <script src="https://vjs.zencdn.net/7.2.3/video.js"></script>
+<script src="https://vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.14.1/videojs-contrib-hls.js"></script>
+<script src="https://vjs.zencdn.net/7.2.3/video.js"></script>
+ <link href="https://vjs.zencdn.net/7.2.3/video-js.css" rel="stylesheet">
+<!-- <video id='hls-example'  class="video-js vjs-default-skin" width="400" height="300" controls>
+<source type="application/x-mpegURL" src="https://cdn.sabha.tv/videos/hls/28ba6723-1498-492b-a7d8-0c61db2b4303.m3u8">
+</video> -->
+<script>
+var player = videojs('hls-example');
+player.play();
+</script>
   <app-root></app-root>
 </body>
 </html>

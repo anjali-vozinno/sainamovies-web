@@ -1,9 +1,12 @@
 <!-- banner image display -->
-<div id="home">
+<!-- *ngIf="video_selected" -->
+<div id="home" *ngIf='id? false : true'>
   <div class="banner" *ngIf="slide">
    <img src="{{slide}}" class="image_size" alt="Random slide">
    </div>
+  
    <!-- first category -->
+  <!-- 
    <div class="first-section row">
     <div class="col-10">
       <h6>{{webSeries}}</h6>
@@ -20,9 +23,11 @@
         <img src="{{w.thumbUrl}}" class="carousel-image" alt="web series video" (click)="getId(w.videoId)">
       </div>      
     </ng-template>   
-  </ngb-carousel>
+  </ngb-carousel> -->
+  
     <!-- second section -->
     <div class="sections">
+  
     <div class="row">
       <div class="col-10">
         <h6>{{songs}}</h6>
@@ -34,13 +39,14 @@
     <div *ngIf="songVideos"> 
       <carousel>  
         <div class="carousel-cell"  *ngFor="let s of songVideos">
+          
           <img src="{{s.thumbUrl}}" class="carousel-image" alt="song video" (click)="getId(s.videoId)">
         </div>
       </carousel>
     </div>
   </div>
     <!-- Third section -->
-    <div class="sections">
+    <!-- <div class="sections">
       <div class="row">
         <div class="col-10">
           <h6>{{sainaOriginals}}</h6>
@@ -56,9 +62,12 @@
           </div>
         </carousel>
       </div>
-      </div>
+    
+      </div> -->
+  
        <!-- fourth section -->
     <div class="sections">
+  
       <div class="row">
         <div class="col-10">
           <h6>{{movies}}</h6>
@@ -74,9 +83,10 @@
           </div>
         </carousel>
       </div>
+    
       </div>
       <!-- Fifth section -->
-    <div class="sections">
+    <!-- <div class="sections">
       <div class="row">
         <div class="col-10">
           <h6>{{hits}}</h6>
@@ -92,9 +102,10 @@
           </div>
         </carousel>
       </div>
-    </div>
+    
+    </div> -->
       <!-- sixth section -->
-    <div class="sections">
+    <!-- <div class="sections">
       <div class="row">
         <div class="col-10">
           <h6>{{documentary}}</h6>
@@ -110,23 +121,9 @@
           </div>
         </carousel>
       </div>
+      
       </div>
     </div>
-  <!-- <app-video [id]="id" *ngIf="!video_selected"></app-video> -->
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+     -->
+</div>
+  <app-video [id]="id" *ngIf="!video_selected"></app-video>

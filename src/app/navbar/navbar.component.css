@@ -12,8 +12,14 @@ a:active, a:hover {
        color: white;
        background-color:black;
 }
-
+.navbar{
+    background-color: black;
+}
+/* 
 .fas{
     color: white;
     background-color: white;
+} */
+.btn {
+    color: ivory;
 }

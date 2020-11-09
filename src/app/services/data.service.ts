@@ -30,23 +30,33 @@ export class DataService {
         }
       })
    }
+   getToken(){
+    this.token= JSON.parse(localStorage.getItem('token'));
+   }
   getOptions(){
+    console.log("token in options "+this.token)
     let headers = new HttpHeaders();
     headers = headers.set('authorization', 'Bearer '+this.token);
     return {
       headers
     }
   }
-  getBanner(tokenValue ) {  
-      this.token = tokenValue;
-       return this.http.get('https://api-dev.sainaplay.info/banners',this.getOptions()); 
+  
+  getBanner() {  
+   this.getToken()
+  return this.http.get('https://api-dev.sainaplay.info/banners',this.getOptions()); 
   }
-
-  getHomeVideos(tokenValue)
-  {
-  this.token = tokenValue;
+  getHomeVideos()
+{
+  this.getToken()
   return this.http.get("https://api-dev.sainaplay.info/homevideos",this.getOptions())
-  }
+}
+
+getDetails(id){
+  this.getToken()
+  return this.http.get("https://api-dev.sainaplay.info/videos?videoId="+id,this.getOptions())
+}
+
     signUp(data) {            
       this.afAuth.createUserWithEmailAndPassword(data.email, data.password)
       .then(() => {   

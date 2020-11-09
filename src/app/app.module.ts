@@ -17,6 +17,8 @@ import { DataService } from './services/data.service';
 import { AuthGuard } from "./auth.guard";
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { VideoComponent } from './video/video.component';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     HomeComponent,
     LoginComponent,
     SignupComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    VideoComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +39,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     ReactiveFormsModule,
     AngularFireAuthModule,
     ShowHidePasswordModule,
+    IvyCarouselModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [AuthGuard,DataService],
