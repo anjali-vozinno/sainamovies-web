@@ -1,7 +1,12 @@
 
 .launch-page {
     background-image: linear-gradient(black, white);
-}
+    height: 100%;
+    width:100%;
+    margin: 0px;
+    padding:0px;
+    overflow-x: hidden;
+  }
 
 .l_error {
     color: red;
@@ -10,6 +15,9 @@
     background-color: black;
     margin-top: 20px;
     width: 35%;
+}
+.card {
+    box-shadow: 0  10px  20px  rgba(0,0,0,0.19), 0  6px  6px  rgba(0,0,0,0.23);
 }
 .text-box {
     background-color: rgb(90, 88, 88);
@@ -30,7 +38,7 @@
 .forgot-link {
     color: goldenrod;
     margin-top: 5px;
-    margin-left: 241px;
+    margin-left: 232px;
 }
 
 /* horizontal line with centerd text from codepen, orginally in scss */

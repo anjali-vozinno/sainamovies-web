@@ -8,6 +8,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
 @Injectable({
   providedIn: 'root'
 })
+
+// git link: https://github.com/anjali-aravind77/saina-movies-new/
+
 export class DataService {
   userData; token;
   
@@ -38,7 +41,12 @@ export class DataService {
       this.token = tokenValue;
        return this.http.get('https://api-dev.sainaplay.info/banners',this.getOptions()); 
   }
-  
+
+  getHomeVideos(tokenValue)
+  {
+  this.token = tokenValue;
+  return this.http.get("https://api-dev.sainaplay.info/homevideos",this.getOptions())
+  }
     signUp(data) {            
       this.afAuth.createUserWithEmailAndPassword(data.email, data.password)
       .then(() => {   
@@ -89,7 +97,7 @@ export class DataService {
       return this.afAuth.signOut()      
       .then(() => {
         localStorage.removeItem('user');
-        this.router.navigateByUrl('login');
+        this.router.navigateByUrl('');
       })
     }
 }

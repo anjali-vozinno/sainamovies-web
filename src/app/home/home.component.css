@@ -1,4 +1,31 @@
 .image_size{
     width:100%;
-   height:auto;
+   height:600px;
+   position: relative;
+}
+* {
+    background-color: black;
+    padding: 0;
+    margin: 0;
+    color: white;
+}
+.carousel-indicators {
+    z-index: -1;
+}
+.carousel-image {
+    position: relative;
+    width:150px;
+    height: 80px;
+}
+.sections {
+    padding: 50px 0px;
+}
+ngb-carousel, img {
+    width: 150px;
+    height: 100px;
+    display: flex
+}
+ngb-carousel {
+    width: inherit;
+    height: inherit;
 }

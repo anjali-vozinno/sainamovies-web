@@ -1,10 +1,9 @@
 .s_error {
     color:red;
 }
-
-
 .launch-page {
-    background-image: linear-gradient(black, white);
+    /* background-image: url('../../assets/images/movie.jpg'); */
+    background-image: linear-gradient( black, grey);
     width: 100%;
 }
 .signup-box {

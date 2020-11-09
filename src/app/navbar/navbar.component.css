@@ -5,9 +5,15 @@ a {
 
 a:active, a:hover {
     color: orange;
+    background-color: black;
 }
 
 .nav-main {
-    background-color: black;
+       color: white;
+       background-color:black;
+}
+
+.fas{
     color: white;
+    background-color: white;
 }

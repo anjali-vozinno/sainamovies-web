@@ -16,6 +16,7 @@ import { environment } from 'src/environments/environment';
 import { DataService } from './services/data.service';
 import { AuthGuard } from "./auth.guard";
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ShowHidePasswordModule } from 'ngx-show-hide-password';
     NavbarComponent,
     HomeComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,6 @@ import { ShowHidePasswordModule } from 'ngx-show-hide-password';
     FormsModule,
     ReactiveFormsModule,
     AngularFireAuthModule,
-    
     ShowHidePasswordModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
