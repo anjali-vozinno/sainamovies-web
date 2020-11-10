@@ -126,4 +126,6 @@
     </div>
      -->
 </div>
-  <app-video [id]="id" *ngIf="!video_selected"></app-video>
+  <app-video [id]="id" [options]="options" *ngIf="!video_selected"></app-video>
+  <!-- <app-video [options]="{ autoplay: true, controls: true, sources: [{ src: 'https://cdn.sabha.tv/videos/hls/28ba6723-1498-492b-a7d8-0c61db2b4303.m3u8',
+  type='application/x-mpegURL'}]}" *ngIf="!video_selected"></app-video> -->

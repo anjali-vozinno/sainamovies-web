@@ -1,29 +1,42 @@
-import { Component, OnInit ,Input, SimpleChanges} from '@angular/core';
+import { Component, OnInit ,Input, SimpleChanges, OnDestroy, ElementRef, ViewChild} from '@angular/core';
 import { DataService } from '../services/data.service';
+import videojs from 'video.js';
 
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',
   styleUrls: ['./video.component.css']
 })
-export class VideoComponent implements OnInit {
-@Input() id: string;
-details:[];
-cast:[];
+export class VideoComponent implements OnInit, OnDestroy {
+  @Input() id;
+  @ViewChild('target', {static: true}) target: ElementRef;
+  // see options: https://github.com/videojs/video.js/blob/mastertutorial-options.html
+  @Input() options: {
+      fluid: boolean,
+      aspectRatio: string,
+      autoplay: boolean,
+      sources: {
+          src: string,
+          type: string,
+      }[],
+  };
+  player: videojs.Player;
 
-constructor(private dataservice:DataService) { }
+  constructor(
+    private elementRef: ElementRef,
+  ) { }
 
-  ngOnInit(): void {
-     alert(this.id)
+  ngOnInit() {
+    // instantiate Video.js
+    this.player = videojs(this.target.nativeElement, this.options, function onPlayerReady() {
+      console.log('onPlayerReady', this);
+    });
   }
 
-  ngOnChanges(changes: SimpleChanges){
-    if(this.id){      
-    this.dataservice.getDetails(this.id)
-    .subscribe((resp:any)=>{
-      console.log(resp)
-    this.details=resp.data;
-    this.cast=resp.data['castCrew']
-    
-    })}
-}}
+  ngOnDestroy() {
+    // destroy player
+    if (this.player) {
+      this.player.dispose();
+    }
+  }
+}

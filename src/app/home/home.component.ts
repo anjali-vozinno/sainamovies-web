@@ -55,9 +55,19 @@ export class HomeComponent implements OnInit {
         this.docVideos=resp[5].videos;
       })
   }
-
-  getId(videoId){
+url; options;
+  getId(videoId){    
     this.id =videoId;
     this.video_selected = !this.video_selected;
+    // this.url = "https://cdn.sabha.tv/videos/hls/28ba6723-1498-492b-a7d8-0c61db2b4303.m3u8";
+    this.options = {
+      fluid: true,
+      aspectRatio: '16:9',
+      autoplay: false,
+      sources: {
+          src: 'https://cdn.sabha.tv/videos/hls/28ba6723-1498-492b-a7d8-0c61db2b4303.m3u8',
+          type: "application/x-mpegURL",
+      },
+  };
   }
 }
