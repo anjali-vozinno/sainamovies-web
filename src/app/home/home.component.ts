@@ -8,19 +8,6 @@ import { Router} from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   slide ; 
-  token;
-  webSeries;
-  webVideos:[];
-  songs;
-  songVideos:[];
-  sainaOriginals;
-  originalsVideos:[];
-  movies;
-  movieVideos:[];
-  hits;
-  hitsVideos:[];
-  documentary;
-  docVideos:[];
   id="";
   video_selected=true;
   
@@ -35,37 +22,19 @@ export class HomeComponent implements OnInit {
      this.dataservice.getBanner()
     .subscribe((resp:any)=>{
       this.slide=resp[0].thumbUrl
-      // console.log( this.slide)
     })
   }
   allCategorys;
-  i=0;
   getHomeVideos(){
     this.dataservice.getHomeVideos()
     .subscribe((resp:any)=>{
-     this.allCategorys = resp;
-    
-    //  this.categorys = resp;
-    //   //  while(this.i <= 2) {
-    //   //    this.category = resp[this.i];
-    //   //   this.i ++;
-    //   //  }
-    //   //  console.log(this.category)
-
-    //   for(this.i of resp) {
-    //     // console.log(this.i)
-    //     this.category = resp[this.i];
-    //     return this.category;
-    //   }
-      //  console.log(this.categorys)
-      })
+     this.allCategorys = resp;   
+    })
+     
   }
     url; options; cname; videoPass;
   getId(videoId, catName){   
-    // alert(catName) 
-    // this.cname = 'Songs'
     this.id =videoId;
-    // alert(videoId)
     this.video_selected = !this.video_selected;
     for(var i = 0; i< this.allCategorys.length; i++) {
       if(this.allCategorys[i].category == catName) {
@@ -74,18 +43,15 @@ export class HomeComponent implements OnInit {
       }
 
     }
-    // console.log(this.videoPass)
-    // console.log(this.categorys)
-    // this.url = "https://cdn.sabha.tv/videos/hls/28ba6723-1498-492b-a7d8-0c61db2b4303.m3u8";
-    this.options = {
-      fluid: true,
-      aspectRatio: '16:9',
-      autoplay: false,
-      sources: {
-          src: 'https://cdn.sabha.tv/videos/hls/28ba6723-1498-492b-a7d8-0c61db2b4303.m3u8',
-          type: "application/x-mpegURL",
-      },
-  };
+  //      this.options = {
+  //     fluid: true,
+  //     aspectRatio: '16:9',
+  //     autoplay: false,
+  //     sources: {
+  //         src: 'https://cdn.sabha.tv/videos/hls/28ba6723-1498-492b-a7d8-0c61db2b4303.m3u8',
+  //         type: "application/x-mpegURL",
+  //     },
+  // };
   }
 }
 
