@@ -1,3 +1,22 @@
 .video_details{
-    padding: 7% 5%;
+    padding: 15% 5%;
+    background-color: black;
+}
+
+.detail{
+    color: white;
+}
+.btn{
+    margin-right: 2%;
+}
+fieldset{
+    font-size:0.5em;
+   border:2px solid green;
+}
+img{
+    width:150px;
+    height: 100px;
+}
+.item{
+  padding-bottom: 3%;
 }

@@ -1,1 +1,82 @@
-<video #target class="video-js" controls muted playsinline preload="none"></video>
+  
+<div class="video_details" *ngIf="id">
+    <div class="row">
+        <div class="col-sm-9">
+
+            <!-- <video id='hls-example' poster="{{details.videoBgUrl}}" class="video-js vjs-default-skin" width="100%"
+                controls>
+                <source type="video/mp4" src="{{details.videoUrl.original}}">
+            </video> -->
+            <video #target class="video-js" controls muted playsinline preload="none"></video>
+            &nbsp;
+            <div class="row">
+                <div class="col-sm-6 left">
+                    <button type="button" class="btn btn-dark" (click)="playVideo()"><i class="fas fa-play"></i>
+                        Play</button>
+                    <button type="button" class="btn btn-dark"> Watch Trailer</button>
+                </div>
+                <div class="col-sm-6 right">
+                    <button type="button" class="btn btn-dark"><i class="far fa-thumbs-up"></i></button>
+                    <button type="button" class="btn btn-dark"><i class="fas fa-heart"></i></button>
+                    <button type="button" class="btn btn-dark"><i class="fas fa-share-alt"></i></button>
+                    <button type="button" class="btn btn-dark"><i class="fas fa-download"></i></button>
+                </div>
+            </div>
+            &nbsp;
+            <div class="row detail">
+
+                <div class="col-sm-6">
+                    <h5>{{details['title']}}</h5>
+                    {{details.category}}|{{details.duration}}|{{details.maturityRating}}|⭐{{details.rating}}
+                </div>
+                <div class="col-sm-6">
+                    <!-- <fieldset>
+                            <legend>Subscribe</legend>
+                            👑Get Premium
+                            <button type="button" class="btn btn-dark"></button>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Rent</legend>
+                            <button type="button" class="btn btn-dark">90</button>
+                        </fieldset> -->
+                </div>
+            </div>
+            <p>{{details.synopsis}}</p>
+        </div>
+        <div class="col-sm-3">
+
+            <!-- <div id="carousel-pager" class="carousel slide " data-ride="carousel" *ngIf="movieVideos">
+                <div class="carousel-inner vertical">
+                    <div class=" item" *ngFor="let m of movieVideos">
+                        <img src="{{m.thumbUrl}}" class="img-responsive" >
+                    </div>
+                </div>
+            </div> -->
+<!-- 
+            <div *ngIf="movieVideos"> 
+                <carousel class ="vertical">  
+                  <div class="carousel-cell "  *ngFor="let w of movieVideos">
+                    
+                    <img src="{{w.thumbUrl}}" class="carousel-image" alt="song video" (click)="getId(w.videoId)">
+                  </div>
+                </carousel>
+              </div> -->
+
+
+              
+                    <div id="myCarousel" class="carousel slide vertical" *ngIf="test">
+                        <!-- Carousel items -->
+                        <div class="carousel-inner">
+                            <div class="item" *ngFor="let m of test">
+                                
+                                <img src="{{m}}">
+                              
+                            </div>
+                          
+                        </div>
+                      
+        </div>
+    </div>
+
+
+</div>

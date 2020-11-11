@@ -34,7 +34,7 @@ export class DataService {
     this.token= JSON.parse(localStorage.getItem('token'));
    }
   getOptions(){
-    console.log("token in options "+this.token)
+    // console.log("token in options "+this.token)
     let headers = new HttpHeaders();
     headers = headers.set('authorization', 'Bearer '+this.token);
     return {
@@ -60,7 +60,7 @@ getDetails(id){
     signUp(data) {            
       this.afAuth.createUserWithEmailAndPassword(data.email, data.password)
       .then(() => {   
-        console.log(data)
+        // console.log(data)
         // this.afs.doc('userdata');
         this.router.navigateByUrl('');
       }).catch(error => {

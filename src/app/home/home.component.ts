@@ -38,27 +38,44 @@ export class HomeComponent implements OnInit {
       // console.log( this.slide)
     })
   }
+  allCategorys;
+  i=0;
   getHomeVideos(){
     this.dataservice.getHomeVideos()
     .subscribe((resp:any)=>{
-        this.webSeries=resp[0].category
-        this.webVideos=resp[0].videos;
-        this.songs=resp[1].category
-        this.songVideos=resp[1].videos;
-        this.sainaOriginals=resp[2].category;
-        this.originalsVideos=resp[2].videos;
-        this.movies=resp[3].category;
-        this.movieVideos=resp[3].videos;
-        this.hits=resp[4].category;
-        this.hitsVideos=resp[4].videos;
-        this.documentary=resp[5].category;
-        this.docVideos=resp[5].videos;
+     this.allCategorys = resp;
+    
+    //  this.categorys = resp;
+    //   //  while(this.i <= 2) {
+    //   //    this.category = resp[this.i];
+    //   //   this.i ++;
+    //   //  }
+    //   //  console.log(this.category)
+
+    //   for(this.i of resp) {
+    //     // console.log(this.i)
+    //     this.category = resp[this.i];
+    //     return this.category;
+    //   }
+      //  console.log(this.categorys)
       })
   }
-url; options;
-  getId(videoId){    
+    url; options; cname; videoPass;
+  getId(videoId, catName){   
+    // alert(catName) 
+    // this.cname = 'Songs'
     this.id =videoId;
+    // alert(videoId)
     this.video_selected = !this.video_selected;
+    for(var i = 0; i< this.allCategorys.length; i++) {
+      if(this.allCategorys[i].category == catName) {
+        this.videoPass = this.allCategorys[i].videos;
+        break;
+      }
+
+    }
+    // console.log(this.videoPass)
+    // console.log(this.categorys)
     // this.url = "https://cdn.sabha.tv/videos/hls/28ba6723-1498-492b-a7d8-0c61db2b4303.m3u8";
     this.options = {
       fluid: true,
@@ -71,3 +88,4 @@ url; options;
   };
   }
 }
+

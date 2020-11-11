@@ -1,131 +1,26 @@
 <!-- banner image display -->
-<!-- *ngIf="video_selected" -->
-<div id="home" *ngIf='id? false : true'>
+<div id="home" *ngIf="id? false:true">
   <div class="banner" *ngIf="slide">
    <img src="{{slide}}" class="image_size" alt="Random slide">
    </div>
-  
-   <!-- first category -->
-  <!-- 
-   <div class="first-section row">
-    <div class="col-10">
-      <h6>{{webSeries}}</h6>
-    </div>
-    <div class="col-2">
-      <a role="button" >
-          <h6> View All</h6>
-      </a>
-    </div>
-  </div>
-  <ngb-carousel *ngIf="webVideos">
-    <ng-template ngbSlide *ngFor="let w of webVideos">
-      <div class="wrapper">
-        <img src="{{w.thumbUrl}}" class="carousel-image" alt="web series video" (click)="getId(w.videoId)">
-      </div>      
-    </ng-template>   
-  </ngb-carousel> -->
-  
-    <!-- second section -->
-    <div class="sections">
-  
+<div>
+  <ng-template ngFor let-item [ngForOf]="allCategorys" let-i="index" [ngForTrackBy]="category">
+    
     <div class="row">
-      <div class="col-10">
-        <h6>{{songs}}</h6>
+      <div class="col-6">
+        {{item.category}}
       </div>
-      <div class="col-2">
-        <h6> View All</h6>
-        </div>
-    </div>
-    <div *ngIf="songVideos"> 
-      <carousel>  
-        <div class="carousel-cell"  *ngFor="let s of songVideos">
-          
-          <img src="{{s.thumbUrl}}" class="carousel-image" alt="song video" (click)="getId(s.videoId)">
-        </div>
-      </carousel>
-    </div>
-  </div>
-    <!-- Third section -->
-    <!-- <div class="sections">
-      <div class="row">
-        <div class="col-10">
-          <h6>{{sainaOriginals}}</h6>
-        </div>
-        <div class="col-2">
-          <h6> View All</h6>
-          </div>
+      <div class="col-6">
+        View All
       </div>
-      <div *ngIf="originalsVideos"> 
-        <carousel>  
-          <div class="carousel-cell"  *ngFor="let o of originalsVideos">
-            <img src="{{o.thumbUrl}}" class="carousel-image" alt="originals video">
+    </div>  
+   
+        <carousel>
+          <div class="carousel-cell"  *ngFor="let eachitem of item.videos">
+            <img src="{{eachitem.thumbUrl}}" class="carousel-image" alt="" (click)="getId(eachitem.videoId, item.category)">
           </div>
         </carousel>
-      </div>
-    
-      </div> -->
-  
-       <!-- fourth section -->
-    <div class="sections">
-  
-      <div class="row">
-        <div class="col-10">
-          <h6>{{movies}}</h6>
-        </div>
-        <div class="col-2">
-          <h6> View All</h6>
-          </div>
-      </div>
-      <div *ngIf="movieVideos"> 
-        <carousel>  
-          <div class="carousel-cell"  *ngFor="let m of movieVideos">
-            <img src="{{m.thumbUrl}}" class="carousel-image" alt="movie video">
-          </div>
-        </carousel>
-      </div>
-    
-      </div>
-      <!-- Fifth section -->
-    <!-- <div class="sections">
-      <div class="row">
-        <div class="col-10">
-          <h6>{{hits}}</h6>
-        </div>
-        <div class="col-2">
-          <h6> View All</h6>
-          </div>
-      </div>
-      <div *ngIf="hitsVideos"> 
-        <carousel>  
-          <div class="carousel-cell"  *ngFor="let h of hitsVideos">
-            <img src="{{h.thumbUrl}}" class="carousel-image" alt="hits video">
-          </div>
-        </carousel>
-      </div>
-    
-    </div> -->
-      <!-- sixth section -->
-    <!-- <div class="sections">
-      <div class="row">
-        <div class="col-10">
-          <h6>{{documentary}}</h6>
-        </div>
-        <div class="col-2">
-          <h6> View All</h6>
-          </div>
-      </div>
-      <div *ngIf="docVideos"> 
-        <carousel>  
-          <div class="carousel-cell"  *ngFor="let d of docVideos">
-            <img src="{{d.thumbUrl}}" class="carousel-image" alt="documentary video">
-          </div>
-        </carousel>
-      </div>
-      
-      </div>
-    </div>
-     -->
+  </ng-template>
 </div>
-  <app-video [id]="id" [options]="options" *ngIf="!video_selected"></app-video>
-  <!-- <app-video [options]="{ autoplay: true, controls: true, sources: [{ src: 'https://cdn.sabha.tv/videos/hls/28ba6723-1498-492b-a7d8-0c61db2b4303.m3u8',
-  type='application/x-mpegURL'}]}" *ngIf="!video_selected"></app-video> -->
+</div>
+<app-video [id]="id" [videoArray]="videoPass" *ngIf="!video_selected"></app-video>
