@@ -1,9 +1,21 @@
+<app-video [id]="id" [videoArray]="videoPass" *ngIf="!video_selected" ></app-video>
+
 <!-- banner image display -->
 <div id="home" *ngIf="id? false:true">
-  <div class="banner" *ngIf="slide">
+  <!-- <div class="banner" *ngIf="slide">
    <img src="{{slide}}" class="image_size" alt="Random slide">
-   </div>
-<div>
+   </div> -->
+   <div class="banner carousel">
+      <!-- <div class="container-fluid"> -->   
+      <ngb-carousel class="no-indicators" *ngIf="slide">    
+        <ng-template ngbSlide *ngFor="let s of slide">   
+           <div class="wrapper">   
+              <img src="{{s}}" class="image_size" alt="Random slide"> 
+            </div>  
+          </ng-template> 
+      </ngb-carousel> 
+    </div>
+
   <ng-template ngFor let-item [ngForOf]="allCategorys" let-i="index" [ngForTrackBy]="category">
     
     <div class="row headings">
@@ -22,5 +34,3 @@
         </carousel>
   </ng-template>
 </div>
-</div>
-<app-video [id]="id" [videoArray]="videoPass" *ngIf="!video_selected" ></app-video>

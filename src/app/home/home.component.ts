@@ -7,7 +7,7 @@ import { Router} from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  slide ; 
+  slide: string[] = []; 
   id="";
   video_selected=true;
   
@@ -21,8 +21,12 @@ export class HomeComponent implements OnInit {
   getBanner(){
      this.dataservice.getBanner()
     .subscribe((resp:any)=>{
-      this.slide=resp[0].thumbUrl
-     
+      // console.log(resp)
+      for(var i=0; i< resp.length; i++) {
+        this.slide.push(resp[i].thumbUrl)
+      }
+      // this.slide=resp[0].thumbUrl
+    //  console.log(this.slide);
     })
   }
   allCategorys;
@@ -38,11 +42,10 @@ export class HomeComponent implements OnInit {
   getId(videoId, catName){   
        this.id =videoId;
       this.video_selected = !this.video_selected;
-    for(var i = 0; i< this.allCategorys.length; i++) {
-      if(this.allCategorys[i].category == catName) {
-        this.videoPass = this.allCategorys[i].videos;
-        
-        break;
+        for(var i = 0; i< this.allCategorys.length; i++) {
+          if(this.allCategorys[i].category == catName) {
+            this.videoPass = this.allCategorys[i].videos;        
+              break;
       }
 
     }

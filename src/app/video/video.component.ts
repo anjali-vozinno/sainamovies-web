@@ -20,6 +20,7 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
   cast:[];
   test: string[] = []; 
   constructor(private dataservice:DataService) {
+    window.scrollTo(0, 0);
    }
 
   ngOnInit() {
@@ -48,6 +49,12 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
     
     
   }
+
+  playVideoBtn() {
+    var vid = document.getElementById('vjs-player');
+
+  }
+
   getId(idFromCarousel){
     this.id=idFromCarousel;
     this.getIdFunction(this.id);
