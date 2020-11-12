@@ -9,13 +9,24 @@
     margin: 0;
     color: white;
 }
+.viewAll{
+    text-align: right;
+}
+.headings{
+    padding: 1% 2%;
+}
 .carousel-indicators {
     z-index: -1;
 }
-.carousel-image {
-    position: relative;
-    width:150px;
-    height: 80px;
+#carousel-image {
+    width: auto;
+    height: 225px;
+    max-height: 225px;
+}
+.carousel-cell{
+    width: 250px;
+    height: 100px;
+    
 }
 .sections {
     padding: 50px 0px;

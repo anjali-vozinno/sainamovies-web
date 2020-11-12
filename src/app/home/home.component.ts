@@ -22,36 +22,31 @@ export class HomeComponent implements OnInit {
      this.dataservice.getBanner()
     .subscribe((resp:any)=>{
       this.slide=resp[0].thumbUrl
+     
     })
   }
   allCategorys;
+ 
   getHomeVideos(){
     this.dataservice.getHomeVideos()
     .subscribe((resp:any)=>{
-     this.allCategorys = resp;   
-    })
-     
+     this.allCategorys = resp;
+   
+      })
   }
     url; options; cname; videoPass;
   getId(videoId, catName){   
-    this.id =videoId;
-    this.video_selected = !this.video_selected;
+       this.id =videoId;
+      this.video_selected = !this.video_selected;
     for(var i = 0; i< this.allCategorys.length; i++) {
       if(this.allCategorys[i].category == catName) {
         this.videoPass = this.allCategorys[i].videos;
+        
         break;
       }
 
     }
-  //      this.options = {
-  //     fluid: true,
-  //     aspectRatio: '16:9',
-  //     autoplay: false,
-  //     sources: {
-  //         src: 'https://cdn.sabha.tv/videos/hls/28ba6723-1498-492b-a7d8-0c61db2b4303.m3u8',
-  //         type: "application/x-mpegURL",
-  //     },
-  // };
+
   }
 }
 

@@ -1,13 +1,9 @@
   
 <div class="video_details" *ngIf="id">
     <div class="row">
-        <div class="col-sm-9">
-
-            <!-- <video id='hls-example' poster="{{details.videoBgUrl}}" class="video-js vjs-default-skin" width="100%"
-                controls>
-                <source type="video/mp4" src="{{details.videoUrl.original}}">
-            </video> -->
-            <video id="vjs-player" class="video-js" controls playsinline preload="none"></video>
+        <div class="col-sm-9 player-section">
+       
+            <video id="vjs-player" class="video-js vjs-big-play-centered" controls playsinline preload="none"></video>
             &nbsp;
             <div class="row">
                 <div class="col-sm-6 left">
@@ -16,10 +12,10 @@
                     <button type="button" class="btn btn-dark"> Watch Trailer</button>
                 </div>
                 <div class="col-sm-6 right">
-                    <button type="button" class="btn btn-dark"><i class="far fa-thumbs-up"></i></button>
-                    <button type="button" class="btn btn-dark"><i class="fas fa-heart"></i></button>
-                    <button type="button" class="btn btn-dark"><i class="fas fa-share-alt"></i></button>
-                    <button type="button" class="btn btn-dark"><i class="fas fa-download"></i></button>
+                    <button type="button" class="btn btn-dark icons"><i class="far fa-thumbs-up"></i></button>
+                    <button type="button" class="btn btn-dark icons"><i class="fas fa-heart"></i></button>
+                    <button type="button" class="btn btn-dark icons"><i class="fas fa-share-alt"></i></button>
+                    <button type="button" class="btn btn-dark icons"><i class="fas fa-download"></i></button>
                 </div>
             </div>
             &nbsp;
@@ -29,54 +25,46 @@
                     <h5>{{details['title']}}</h5>
                     {{details.category}}|{{details.duration}}|{{details.maturityRating}}|⭐{{details.rating}}
                 </div>
-                <div class="col-sm-6">
-                    <!-- <fieldset>
-                            <legend>Subscribe</legend>
+                <div class="col-sm-6 fieldset-section" >
+                    <fieldset class="border p-2" id="f-sub">
+                        <legend class="w-auto leg-subscribe">Subscribe</legend>
+                        <h6 style="font-weight: normal;text-align: center;"> 👑 Get Premium </h6>
+                     </fieldset>
+                    <!-- <fieldset id="f-sub">
+                            <legend class="leg-subscribe">Subscribe</legend> 
                             👑Get Premium
-                            <button type="button" class="btn btn-dark"></button>
-                        </fieldset>
-                        <fieldset>
-                            <legend>Rent</legend>
-                            <button type="button" class="btn btn-dark">90</button>
+                            <button type="button" class="btn btn-dark"> </button>
                         </fieldset> -->
+                        <fieldset class="border p-2" id="f-rent">
+                            <legend class="w-auto leg-rent">Rent</legend>
+                           <h6 style="font-weight: normal; text-align: center; "> 90 &#8377; </h6>
+                            <!-- <button type="button" class="btn btn-dark"></button> -->
+                        </fieldset>
                 </div>
             </div>
             <p>{{details.synopsis}}</p>
         </div>
+ 
+        
         <div class="col-sm-3">
-
-            <!-- <div id="carousel-pager" class="carousel slide " data-ride="carousel" *ngIf="movieVideos">
-                <div class="carousel-inner vertical">
-                    <div class=" item" *ngFor="let m of movieVideos">
-                        <img src="{{m.thumbUrl}}" class="img-responsive" >
-                    </div>
-                </div>
-            </div> -->
-<!-- 
-            <div *ngIf="movieVideos"> 
-                <carousel class ="vertical">  
-                  <div class="carousel-cell "  *ngFor="let w of movieVideos">
+            <h6>More like this</h6>
+            &nbsp;
+        <div id="myCarousel" class="carousel slide vertical" *ngIf="videoArray">
+            <!-- Carousel items -->
+            <div class="carousel-inner">
+                <div class="item" *ngFor="let v of videoArray" >
                     
-                    <img src="{{w.thumbUrl}}" class="carousel-image" alt="song video" (click)="getId(w.videoId)">
-                  </div>
-                </carousel>
-              </div> -->
-
-
+                    <img class="img"src="{{v.thumbUrl}}"  (click)="getId(v.videoId)" >
+                  
+                </div>
               
-                    <div id="myCarousel" class="carousel slide vertical" *ngIf="test">
-                        <!-- Carousel items -->
-                        <div class="carousel-inner">
-                            <div class="item" *ngFor="let m of test">
-                                
-                                <img src="{{m}}">
-                              
-                            </div>
-                          
-                        </div>
-                      
+            </div>
         </div>
     </div>
+    
 
-
+    </div>
 </div>
+
+
+

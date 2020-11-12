@@ -9,8 +9,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root'
 })
 
-// git link: https://github.com/anjali-aravind77/saina-movies-new/
-
 export class DataService {
   userData; token;
   
