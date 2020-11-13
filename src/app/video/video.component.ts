@@ -45,14 +45,14 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
       // console.log(this.details)
       this.cast=resp.data[0]['castCrew']; 
         this.playVideo();   
-    }) 
-    
+    })     
     
   }
 
-  playVideoBtn() {
-    var vid = document.getElementById('vjs-player');
-
+  playVideoBtn(e) {
+    console.log(e);
+    var myPlayer = videojs('vjs-player');
+    myPlayer.play();
   }
 
   getId(idFromCarousel){

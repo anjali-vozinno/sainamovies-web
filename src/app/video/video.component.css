@@ -37,6 +37,14 @@ fieldset{
    padding-left: 4px;
   }
 
+.vjs-tech { 
+  object-fit:cover;
+  }
+
+.vjs-poster {
+   background-size: cover;
+ }
+
 legend{
     font-size: medium;
     color: goldenrod;

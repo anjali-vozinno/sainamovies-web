@@ -2,9 +2,6 @@
 
 <!-- banner image display -->
 <div id="home" *ngIf="id? false:true">
-  <!-- <div class="banner" *ngIf="slide">
-   <img src="{{slide}}" class="image_size" alt="Random slide">
-   </div> -->
    <div class="banner carousel">
       <!-- <div class="container-fluid"> -->   
       <ngb-carousel class="no-indicators" *ngIf="slide">    
@@ -17,20 +14,19 @@
     </div>
 
   <ng-template ngFor let-item [ngForOf]="allCategorys" let-i="index" [ngForTrackBy]="category">
-    
-    <div class="row headings">
+    <div *ngIf="item.videos.length !=0">
       <div class="col-sm-6">
         {{item.category}}
       </div>
       <div class="col-sm-6 viewAll">
         View All
       </div>
-    </div>  
    
         <carousel>
           <div class="carousel-cell"  *ngFor="let eachitem of item.videos">
-            <img src="{{eachitem.thumbUrl}}" id="carousel-image" alt="" (click)="getId(eachitem.videoId, item.category)">
+              <img src="{{eachitem.thumbUrl}}" id="carousel-image" alt="" (click)="getId(eachitem.videoId, item.category)">
           </div>
         </carousel>
+      </div> <!--  null category div close -->
   </ng-template>
 </div>
