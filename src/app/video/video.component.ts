@@ -9,7 +9,7 @@ import videojs from 'video.js';
   encapsulation: ViewEncapsulation.None,
 })
 export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
-  @Input() id;
+  @Input() id; playStatus; playText = 'Play';
   // @ViewChild('target', {static: true}) target: ElementRef;
   // see options: https://github.com/videojs/video.js/blob/mastertutorial-options.html
   
@@ -24,6 +24,7 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
    }
 
   ngOnInit() {
+    this.playStatus = true;
     for(var i=0; i< this.videoArray.length; i++) { 
       this.test.push(this.videoArray[i].thumbUrl);
     }
@@ -45,14 +46,23 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
       // console.log(this.details)
       this.cast=resp.data[0]['castCrew']; 
         this.playVideo();   
-    })     
-    
+    })    
   }
-
-  playVideoBtn(e) {
-    console.log(e);
-    var myPlayer = videojs('vjs-player');
-    myPlayer.play();
+  
+  playVideoBtn() {
+    var videoObj = videojs('vjs-player');
+      if (!videoObj.paused()) {
+          console.log("Video is playing");
+          this.playStatus = true;
+          this.playText = 'Play';
+          videoObj.pause();
+      } else {
+          console.log("Video is paused");
+          this.playStatus = false;
+          this.playText = 'Pause';
+          videoObj.play();
+      }
+  
   }
 
   getId(idFromCarousel){
@@ -60,9 +70,8 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
     this.getIdFunction(this.id);
   }
   playVideo() {
-
     var myPlayer = videojs('vjs-player');
-    myPlayer.src([{
+     myPlayer.src([{
       type: 'application/x-mpegURL',
       src: this.urlVideohls
     },     
@@ -72,21 +81,7 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
     }]);
     myPlayer.poster(this.urlPoster);
   }
-  // ngAfterViewInit() {
-  //   const options = {
-  //     'sources' : [{
-  //       'src' : this.urlVideohls,
-  //       'type' : 'application/x-mpegURL'
-  //       },{
-  //         'src':this.urlVideoOrg,
-  //         'type':'video/mp4'
-  //       }
-  //     ],
-  //     'poster' : this.urlPoster
-  //   };
-  //   this.player = videojs('vjs-player', options);
-  // }
-
+ 
   ngOnDestroy() {
     // destroy player
     if (this.player) {

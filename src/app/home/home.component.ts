@@ -34,11 +34,10 @@ export class HomeComponent implements OnInit {
   getHomeVideos(){
     this.dataservice.getHomeVideos()
     .subscribe((resp:any)=>{
-     this.allCategorys = resp;
-   
-      })
+     this.allCategorys = resp;   
+    })
   }
-    url; options; cname; videoPass;
+    url; options; videoPass;
   getId(videoId, catName){   
        this.id =videoId;
       this.video_selected = !this.video_selected;
