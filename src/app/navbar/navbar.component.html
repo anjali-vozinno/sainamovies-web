@@ -1,66 +1,57 @@
-<div class="nav-main">
-  <nav class="navbar navbar-expand-lg  fixed-top navbar-transparent" [ngClass]="{'navbar-inverse': isScrolled}">
-      <a class="navbar-brand" href="#">Logo</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" [routerLink]="['home']">Home </a>
-          </li>
-          <li class="nav-item active">
-              <a class="nav-link" [routerLink]="['/livepage','clips']">Clips </a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" [routerLink]="['/livepage','fanshow']">Fan Show</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" [routerLink]="['/livepage','poll']">Poll</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" [routerLink]="['/livepage','sainaOriginals']">Saina Originals</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" [routerLink]="['/livepage','premium']">Premium </a>
-            </li>
-              </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <div class="" *ngIf="status">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></div>
-          <button class="btn  my-2 my-sm-0" type="submit" (click)="showSearchBar()" ><i class="fas fa-search" ></i></button>
-        </form>
-               
+<nav class="navbar navbar-expand-lg ">
+  <a class="navbar-brand" [routerLink]="'.'">Logo</a>
 
-        <!-- <div class="dropdown"> -->
-          <!-- <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownMenuButton"  aria-haspopup="true" aria-expanded="false">
-            
-          </button> -->
-          <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
-            <!-- <span class="navbar-toggler-icon"></span> -->
-          <!-- </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Downloads</a>
-            <a class="dropdown-item" href="#">Favourites</a>
-            <a class="dropdown-item" href="#">New Arrivals</a>
-            <a class="dropdown-item" href="#">Trending</a>
-            <a class="dropdown-item" href="#">My Account</a>
-            <a class="dropdown-item" href="#">Sign Out</a>
-          </div>
-        </div> -->
+  <!-- Step 3: Toggle the value of the property when the toggler button is clicked. -->
+  <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+    &#9776;
+  </button>
 
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn nav-link dropdown-toggle" id="dropdownBasic1" ngbDropdownToggle><i class="fas fa-bars"></i></button>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownBasic1" ngbDropdownMenu >
-              <button class="dropdown-item">Downloads</button>
-              <button class="dropdown-item">Favourites</button>
-              <button class="dropdown-item">New Arrivals</button>
-              <button class="dropdown-item">Trending</button>
-              <button class="dropdown-item">My Account</button>
-              <button class="dropdown-item" (click)="signOut()">Sign Out</button>
-          </div>
-      </div>
-      </div>
-    </nav>
-</div>
+  <!-- Step 2: Add the ngbCollapse directive to the element below. -->
+  <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto" >
+      <li class="nav-item active">
+        <!-- Step 4: Close the menu when a link is clicked. -->
+        <a class="nav-link" [routerLink]="'home'" (click)="isMenuCollapsed = true">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true">Clips</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true">Fan Show</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true">Poll</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true">Saina Originals</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true">About</a>
+        </li>
+       </ul>
+       <form class="form-inline my-2 my-lg-0">
+        <div class="" *ngIf="status">
+        <input class="form-control mr-sm-2 searchBox" type="search" placeholder="Search" aria-label="Search"></div>
+        <button class="btn  my-2 my-sm-0" type="submit" (click)="showSearchBar()" ><i class="fas fa-search" ></i></button>
+      </form>
+     
+       
+      <div ngbDropdown class="d-inline-block ">
+        
+        <button class="btn nav-link dropdown-toggle"  id="dropdownBasic1" ngbDropdownToggle><i class="fas fa-bars"></i></button>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownBasic1" ngbDropdownMenu >
+            <button class="dropdown-item">Downloads</button>
+            <button class="dropdown-item">Favourites</button>
+            <button class="dropdown-item">New Arrivals</button>
+            <button class="dropdown-item">Trending</button>
+            <button class="dropdown-item">My Account</button>
+            <button class="dropdown-item" (click)="signOut()">Sign Out</button>
+        </div>
+    </div>
+  
+   
+      
+
+  </div>
+ 
+</nav>

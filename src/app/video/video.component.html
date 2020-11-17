@@ -9,7 +9,7 @@
                 <div class="col-sm-6 left">
                     <button type="button" class="btn btn-dark" (click)="playVideoBtn()">
                         <div *ngIf="playStatus ? true : false" class="toggleBtn">                                                               
-                        <i class="fas fa-play"></i> {{playText}}
+                        <i class="fas fa-play"></i> &nbsp; {{playText}}
                         </div>
                         <div *ngIf="!playStatus ? true : false" class="toggleBtn">
                         <i class="fas fa-pause"></i> &nbsp; {{playText}}

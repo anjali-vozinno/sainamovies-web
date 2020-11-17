@@ -13,8 +13,9 @@
 }
 .signin-box {
     background-color: black;
-    margin-top: 20px;
-    width: 35%;
+    margin-top: 20vh;
+    width: 35vw;
+    display: flex;
 }
 .card {
     box-shadow: 0  10px  20px  rgba(0,0,0,0.19), 0  6px  6px  rgba(0,0,0,0.23);
@@ -37,8 +38,9 @@
 
 .forgot-link {
     color: goldenrod;
-    margin-top: 5px;
-    margin-left: 232px;
+    margin:0px;
+    transform: translateX(18vw);
+
 }
 
 /* horizontal line with centerd text from codepen, orginally in scss */
@@ -113,4 +115,25 @@
         background-color: rgb(90, 88, 88);
         border-color: rgb(90, 88, 88);
         margin-left: -1px;
+    }
+
+    .show-hide:focus {
+        border-color: none !important;
+        box-shadow: none;
+    }
+
+    .form-control:focus {
+        border-color:none;
+        box-shadow: none;
+      }
+
+      @media (max-width: 768px) {
+        .signin-box {
+          width: 90vw;
+          height: 90vh;
+         
+        }
+        .forgot-link {
+            transform: translateX(55vw);
+        }
     }

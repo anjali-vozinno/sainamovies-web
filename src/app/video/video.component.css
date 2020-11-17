@@ -19,16 +19,18 @@
     width: 100% ;
     height: 350px;
 }
+video[poster]{
+  object-fit: cover;
+}
+.vjs-poster {
+  background-size: cover;
+  background-position: inherit;
+}
 .detail{
     color: white;
 }
 .btn{
     margin-right: 2%;
-}
-
-.toggleBtn {
-  width: max-content;
-  display: inline-block;
 }
 .fieldset-section{
     text-align: right;
@@ -46,9 +48,7 @@ fieldset{
   object-fit:cover;
   }
 
-.vjs-poster {
-   background-size: cover;
- }
+
 
 legend{
     font-size: medium;
@@ -90,3 +90,7 @@ legend.leg-rent {
 }
 
 
+.toggleBtn {
+  width: max-content;
+  display: inline-block;
+}

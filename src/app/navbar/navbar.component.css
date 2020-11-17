@@ -14,6 +14,7 @@ a:active, a:hover {
 }
 .navbar{
     background-color: black;
+    margin: 0;
 }
 /* 
 .fas{
@@ -22,4 +23,24 @@ a:active, a:hover {
 } */
 .btn {
     color: ivory;
+}
+.dropdown-menu-right{
+    background-color:#000000;
+    /* margin:4px auto -200px 4px ; */
+    
+}
+.dropdown-item{
+    color: #ffffff;
+}
+.dropdown-item:hover{
+    background-color: rgb(39, 37, 37);
+    color: goldenrod;
+}
+.dropdown-toggle::after {
+    display:none;
+    
+}
+.searchBox{
+    background-color: rgb(41, 39, 39);
+    color: white;
 }

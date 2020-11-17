@@ -57,3 +57,12 @@
     border-color: rgb(90, 88, 88);
     margin-left: -1px;
 }
+
+@media (max-width: 768px) {
+    .signup-box {
+      width: 90vw;
+      height: 90vh;
+     
+    }
+}
+   

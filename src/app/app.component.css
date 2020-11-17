@@ -1,0 +1,18 @@
+.secNav{
+  
+    display: none;
+}
+ .mainNav{
+   
+       display: block;
+   } 
+@media only screen and (max-width: 768px) {
+   .mainNav{
+      
+       display: none;
+   } 
+   .secNav{
+      
+       display: block;
+   }
+} 

@@ -19,6 +19,9 @@ import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { VideoComponent } from './video/video.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { NavbarMobileComponent } from './navbar-mobile/navbar-mobile.component';
+import { FooterComponent } from './footer/footer.component';
+import { ClipsComponent } from './clips/clips.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
     LoginComponent,
     SignupComponent,
     ForgotPasswordComponent,
-    VideoComponent
+    VideoComponent,
+    NavbarMobileComponent,
+    FooterComponent,
+    ClipsComponent
   ],
   imports: [
     BrowserModule,

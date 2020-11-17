@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
     }
     else {
       alert("form invalid")
+      // swal("Enter a valid username and password");
     }
   }
 

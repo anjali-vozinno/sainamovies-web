@@ -8,7 +8,7 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  status=false;
+  status=false; isMenuCollapsed;
   constructor(private dataService: DataService, private router:Router) { }
 
   ngOnInit(): void {
