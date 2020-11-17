@@ -3,7 +3,7 @@ a {
     color: white;
 }
 
-a:active, a:hover {
+a:active {
     color: orange;
     background-color: black;
 }

@@ -79,7 +79,8 @@ getDetails(id){
        }).catch(err => {
          window.alert(err)
        })
-        this.router.navigateByUrl("home")
+        
+         this.router.navigateByUrl("home/:false")
       }).catch(err => {
         window.alert(err);
       })

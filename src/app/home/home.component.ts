@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from '../services/data.service';
-import { Router} from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,14 +10,25 @@ import { Router} from '@angular/router';
 export class HomeComponent implements OnInit {
   slide: string[] = []; 
   id="";
-  video_selected=true;
+  video_selected=false;
+  state;
   
-  constructor(private dataservice:DataService,private router:Router) {      
+  constructor(private dataservice:DataService,private router:Router,private activatedRouter:ActivatedRoute) {      
   }
  
   ngOnInit(): void {
     this.getBanner();
     this.getHomeVideos();
+
+    this.activatedRouter.paramMap.subscribe((params:any) => {
+      this.state = params.get('state');
+  if(this.state.charAt(0)==':'){
+this.video_selected ==this.state.substring(1)
+alert(this.video_selected)
+  }
+     
+     
+    })
   }
   getBanner(){
      this.dataservice.getBanner()
@@ -34,8 +46,9 @@ export class HomeComponent implements OnInit {
   getHomeVideos(){
     this.dataservice.getHomeVideos()
     .subscribe((resp:any)=>{
-     this.allCategorys = resp;   
-    })
+     this.allCategorys = resp;
+   
+      })
   }
     url; options; videoPass;
   getId(videoId, catName){   

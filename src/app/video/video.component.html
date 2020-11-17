@@ -9,7 +9,7 @@
                 <div class="col-sm-6 left">
                     <button type="button" class="btn btn-dark" (click)="playVideoBtn()">
                         <div *ngIf="playStatus ? true : false" class="toggleBtn">                                                               
-                        <i class="fas fa-play"></i> &nbsp; {{playText}}
+                        <i class="fas fa-play"></i> {{playText}}
                         </div>
                         <div *ngIf="!playStatus ? true : false" class="toggleBtn">
                         <i class="fas fa-pause"></i> &nbsp; {{playText}}
@@ -29,7 +29,7 @@
 
                 <div class="col-sm-6">
                     <h5>{{details['title']}}</h5>
-                    {{details.category}}|{{details.duration}}|{{details.maturityRating}}|⭐{{details.rating}}
+                    {{details.category }}|{{year[0] }}|{{details.duration }}|{{details.maturityRating }}|⭐{{ details.rating}}
                 </div>
                 <div class="col-sm-6 fieldset-section" >
                     <fieldset class="border p-2" id="f-sub">

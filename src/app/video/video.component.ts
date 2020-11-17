@@ -19,6 +19,7 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
   details:[];
   cast:[];
   test: string[] = []; 
+  year;
   constructor(private dataservice:DataService) {
     window.scrollTo(0, 0);
    }
@@ -45,10 +46,12 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
       this.details=resp.data[0];
       // console.log(this.details)
       this.cast=resp.data[0]['castCrew']; 
+      this.year=resp.data[0]['releaseDate'].split('-').slice(0,1)
         this.playVideo();   
-    })    
+    })     
+    
   }
-  
+
   playVideoBtn() {
     var videoObj = videojs('vjs-player');
       if (!videoObj.paused()) {
@@ -61,17 +64,16 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
           this.playStatus = false;
           this.playText = 'Pause';
           videoObj.play();
-      }
-  
-  }
+      }}
 
   getId(idFromCarousel){
     this.id=idFromCarousel;
     this.getIdFunction(this.id);
   }
   playVideo() {
+
     var myPlayer = videojs('vjs-player');
-     myPlayer.src([{
+    myPlayer.src([{
       type: 'application/x-mpegURL',
       src: this.urlVideohls
     },     
@@ -81,7 +83,21 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
     }]);
     myPlayer.poster(this.urlPoster);
   }
- 
+  // ngAfterViewInit() {
+  //   const options = {
+  //     'sources' : [{
+  //       'src' : this.urlVideohls,
+  //       'type' : 'application/x-mpegURL'
+  //       },{
+  //         'src':this.urlVideoOrg,
+  //         'type':'video/mp4'
+  //       }
+  //     ],
+  //     'poster' : this.urlPoster
+  //   };
+  //   this.player = videojs('vjs-player', options);
+  // }
+
   ngOnDestroy() {
     // destroy player
     if (this.player) {

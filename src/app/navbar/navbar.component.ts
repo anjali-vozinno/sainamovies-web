@@ -8,13 +8,15 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  status=false; isMenuCollapsed;
+  status=false;
+  public isMenuCollapsed = true;
+  
   constructor(private dataService: DataService, private router:Router) { }
 
   ngOnInit(): void {
   }
   isScrolled = false;
-
+  isNavbarCollapsed=true;
 @HostListener("window:scroll")
 scrollEvent() {
     window.pageYOffset >= 80 ? (this.isScrolled = true) : (this.isScrolled = false);
