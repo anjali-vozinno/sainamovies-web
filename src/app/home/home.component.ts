@@ -22,10 +22,10 @@ export class HomeComponent implements OnInit {
 
     this.activatedRouter.paramMap.subscribe((params:any) => {
       this.state = params.get('state');
-  if(this.state.charAt(0)==':'){
-this.video_selected ==this.state.substring(1)
-alert(this.video_selected)
-  }
+//   if(this.state.charAt(0)==':'){
+// this.video_selected ==this.state.substring(1)
+// alert(this.video_selected)
+//   }
      
      
     })

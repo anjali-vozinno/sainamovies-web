@@ -1,7 +1,9 @@
 <app-video [id]="id" [videoArray]="videoPass" *ngIf="video_selected" ></app-video>
 
 <!-- banner image display -->
+<div *ngIf="!video_selected">
 <div id="home" *ngIf="id? false:true">
+  
    <div class="banner carousel">
       <!-- <div class="container-fluid"> -->   
       <ngb-carousel class="no-indicators" *ngIf="slide">    
@@ -31,4 +33,5 @@
         </carousel>
      </div>  <!--  null category div close -->
   </ng-template>
+</div>
 </div>

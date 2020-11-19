@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input, SimpleChanges, OnDestroy, ElementRef, ViewChild, OnChanges, AfterViewInit, ViewEncapsulation} from '@angular/core';
+import { Component, OnInit ,Input, SimpleChanges, OnDestroy, ElementRef, ViewChild, OnChanges, AfterViewInit, ViewEncapsulation, DoCheck} from '@angular/core';
 import { DataService } from '../services/data.service';
 import videojs from 'video.js';
 
@@ -8,7 +8,7 @@ import videojs from 'video.js';
   styleUrls: ['./video.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
+export class VideoComponent implements OnInit, OnChanges, OnDestroy {
   @Input() id; playStatus; playText = 'Play';
   // @ViewChild('target', {static: true}) target: ElementRef;
   // see options: https://github.com/videojs/video.js/blob/mastertutorial-options.html
@@ -19,21 +19,23 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
   details:[];
   cast:[];
   test: string[] = []; 
-  year;
-  constructor(private dataservice:DataService) {
+  year; 
+  constructor(private dataservice:DataService, private nativeElement: ElementRef) {
     window.scrollTo(0, 0);
-   }
+  }
 
   ngOnInit() {
     this.playStatus = true;
     for(var i=0; i< this.videoArray.length; i++) { 
       this.test.push(this.videoArray[i].thumbUrl);
     }
+    
   }
   
   ngOnChanges(changes: SimpleChanges){
       this.getIdFunction(this.id);  
   }
+
   getIdFunction(idFromCarousel){
       this.id=idFromCarousel;   
       this.dataservice.getDetails(this.id)
@@ -52,26 +54,34 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
     
   }
 
+  playerButton() {
+     this.player = this;
+    // if(this.player.nativeElement.paused()) {
+    //   console.log("1")
+    // }
+    this.player.on('playing', function() {
+      console.log("1")
+    });
+  }
+
   playVideoBtn() {
     var videoObj = videojs('vjs-player');
       if (!videoObj.paused()) {
-          console.log("Video is playing");
           this.playStatus = true;
           this.playText = 'Play';
           videoObj.pause();
       } else {
-          console.log("Video is paused");
           this.playStatus = false;
           this.playText = 'Pause';
           videoObj.play();
-      }}
+      }
+    }
 
   getId(idFromCarousel){
     this.id=idFromCarousel;
     this.getIdFunction(this.id);
   }
   playVideo() {
-
     var myPlayer = videojs('vjs-player');
     myPlayer.src([{
       type: 'application/x-mpegURL',
@@ -82,6 +92,8 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
       src: this.urlVideoOrg
     }]);
     myPlayer.poster(this.urlPoster);
+   
+   // console.log(myPlayer)
   }
   // ngAfterViewInit() {
   //   const options = {
@@ -102,6 +114,8 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
     // destroy player
     if (this.player) {
       this.player.dispose();
+      this.id = "";
+      
       
     }
   }
