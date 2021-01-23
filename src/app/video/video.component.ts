@@ -1,6 +1,7 @@
 import { Component, OnInit ,Input, SimpleChanges, OnDestroy, ElementRef, ViewChild, OnChanges, AfterViewInit, ViewEncapsulation, DoCheck} from '@angular/core';
 import { DataService } from '../services/data.service';
 import videojs from 'video.js';
+// import * as videojs from 'video.js';
 
 @Component({
   selector: 'app-video',
@@ -19,10 +20,11 @@ export class VideoComponent implements OnInit, OnChanges, OnDestroy {
   details:[];
   cast:[];
   test: string[] = []; 
-  year; 
+  year;
   constructor(private dataservice:DataService, private nativeElement: ElementRef) {
     window.scrollTo(0, 0);
   }
+
 
   ngOnInit() {
     this.playStatus = true;
@@ -34,6 +36,20 @@ export class VideoComponent implements OnInit, OnChanges, OnDestroy {
   
   ngOnChanges(changes: SimpleChanges){
       this.getIdFunction(this.id);  
+  }
+
+  ngAfterViewInit() {
+    var videoPl = videojs('vjs-player');
+    
+    document.querySelector('video').addEventListener('play',  evt => { 
+               this.playStatus = false;
+               this.playText = 'Pause';          
+      
+   }); 
+    document.querySelector('video').addEventListener('pause', ev => {
+            this.playStatus = true;
+            this.playText = 'Play';
+    })
   }
 
   getIdFunction(idFromCarousel){
@@ -54,15 +70,25 @@ export class VideoComponent implements OnInit, OnChanges, OnDestroy {
     
   }
 
+
+  // // Get the spacer element
+// spacer = document.getElementsByClassName('vjs-spacer')[0];
+// // Place the new element in the spacer
+// spacer.appendChild(newElement);
+
+
   playerButton() {
-     this.player = this;
-    // if(this.player.nativeElement.paused()) {
-    //   console.log("1")
-    // }
-    this.player.on('playing', function() {
-      console.log("1")
-    });
+    var videoObj = videojs('vjs-player');
+    if (!videoObj.paused()) {
+        this.playStatus = false;
+        this.playText = 'Pause';
+    } else {
+        this.playStatus = true;
+        this.playText = 'Play';
+    }
+
   }
+
 
   playVideoBtn() {
     var videoObj = videojs('vjs-player');

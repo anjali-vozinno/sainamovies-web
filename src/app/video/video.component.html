@@ -7,7 +7,7 @@
             &nbsp;
             <div class="row">
                 <div class="col-sm-6 left">
-                    <button type="button" class="btn btn-dark" (click)="playVideoBtn()">
+                    <button type="button" class="btn btn-dark play-toggle" id="play-toggle-btn" (click)="playVideoBtn()">
                         <div *ngIf="playStatus ? true : false" class="toggleBtn">                                                               
                         <i class="fas fa-play"></i> {{playText}}
                         </div>
